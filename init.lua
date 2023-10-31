@@ -8,7 +8,7 @@ setmetatable(module, module)
 
 -- Metadata
 module.name = "SpoonHelper"
-module.version = "0.0.1"
+module.version = "0.0.2"
 module.author = "Neta Elad <elad.neta@gmail.com>"
 module.homepage = "https://github.com/neta-elad/SpoonHelper.spoon"
 module.license = "MIT - https://opensource.org/licenses/MIT"
