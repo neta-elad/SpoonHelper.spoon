@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Spoon Scaffold Form</title>
+        <style>
+            main {
+                text-align: center;
+                font-size: 1.35em;
+                margin: 0 16px;
+            }
+
+            input, button, textarea {
+                font-size: 1em;
+            }
+            
+            form {
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                grid-gap: 16px;
+            }
+
+            label {
+                grid-column: 1 / 2;
+                text-align: right;
+            }
+
+            input, button {
+                grid-column: 2 / 3;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>Spoon Scaffold Form</h1>
+
+            <form id="scaffold-form">
+                <label for="project">Project name:</label>
+                <input id="project" required placeholder="(should not contain spaces)" />
+
+                <label for="description">Description:</label>
+                <textarea id="description" rows="3"></textarea>
+
+                <label for="author">Author name:</label>
+                <input id="author" />
+
+                <label for="email">Author email:</label>
+                <input type="email" id="email" />
+
+                <label for="github">GitHub username:</label>
+                <input autocapitalize="off" autocomplete="off" id="github" />
+
+                <label for="workflow">GitHub workflow?</label>
+                <input type="checkbox" id="workflow" />
+
+                <button type="submit">Create</button>
+            </form>
+        </main>
+    </body>
+    <script>
+        document.getElementById("scaffold-form").onsubmit = function (event) {
+            let form = event.target;
+            webkit.messageHandlers.SpoonHelperScaffold.postMessage({
+                project: form.project.value,
+                description: form.description.value,
+                author: form.author.value,
+                email: form.email.value,
+                github: form.github.value,
+                workflow: form.workflow.checked
+            });
+            window.close();
+        };
+
+        const author = document.getElementById("author");
+        function setAuthor(value) {
+            author.value = value;
+        }
+
+        const email = document.getElementById("email");
+        function setEmail(value) {
+            email.value = value;
+        }
+
+        const github = document.getElementById("github");
+        function setGitHub(value) {
+            github.value = value;
+        }
+
+        const workflow = document.getElementById("workflow");
+        function setWorkflow(value) {
+            workflow.checked = value;
+        }
+    </script>
+</html>
